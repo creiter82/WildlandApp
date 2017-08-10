@@ -1,5 +1,5 @@
 class CertificationsController < ApplicationController
-  before_action :set_cert, only: [:create, :edit, :update, :destroy]
+  before_action :set_cert, only: [:edit, :update, :destroy]
 
   def index
     @certs = Certification.all
