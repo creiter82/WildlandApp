@@ -5,14 +5,6 @@
   <p>Email: <%= @user.email %></p>
   <p>Shift: <%= @user.shift %></p>
   <p> Quals:
-    <% if @user.certifications.size > 0 %>
-      <ul>
-        <% @user.certifications.order(:acronym).each do |cert| %>
-          <li>
-            <%= cert.acronym.upcase %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render 'shared/user_certs' %>
   </p>
 </div>

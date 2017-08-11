@@ -20,15 +20,7 @@
           <td><%= user.email %></td>
           <td><%= user.shift.capitalize %></td>
           <td>
-            <% if user.certifications.size > 0 %>
-              <ul>
-                <% user.certifications.order(:acronym).each do |cert| %>
-                  <li>
-                    <%= cert.acronym.upcase %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
+            <%= render 'shared/user_certs' %>
           </td>
           <td>
             <%= link_to 'View', user_path(user) %>

@@ -1,0 +1,9 @@
+<% if @user.certifications.size > 0 %>
+  <ul>
+    <% @user.certifications.order(:acronym).each do |cert| %>
+      <li>
+        <%= cert.acronym.upcase %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
