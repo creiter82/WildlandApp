@@ -24,6 +24,13 @@ class CertificationsController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @cert.update(cert_params)
+        format.html { redirect_to certifications_path, notice: "#{@cert.name.titleize} was successfully updated." }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
