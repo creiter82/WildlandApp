@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  has_many :user_certifications
+  has_many :certifications, through: :user_certifications       
+
   validates_presence_of :name
 
   def first_name
