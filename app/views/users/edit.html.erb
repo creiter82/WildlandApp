@@ -36,6 +36,21 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <%= fields_for(@user, @user.user_certifications.build) do |f| %>
+    <div class="form-group">
+      <%= f.label :certifications, class: "col-sm-4 control-label" %>
+      <div class="collection-check-box col-sm-8">
+        <%= f.collection_check_boxes :certification_ids, Certification.all, 
+                                      :id, :name do |b| %>
+          <div class="check-box form-control no-border">                            
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>  
+      </div>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
