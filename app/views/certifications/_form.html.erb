@@ -1,0 +1,19 @@
+<%= form_for(@cert, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :acronym %><br />
+    <%= f.text_field :acronym %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back', :back %>
