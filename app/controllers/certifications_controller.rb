@@ -10,6 +10,14 @@ class CertificationsController < ApplicationController
   end
 
   def create
+    @cert = Certification.new(cert_params)
+    respond_to do |format|
+      if @cert.save
+        format.html { redirect_to certifications_path, notice: "#{@cert.name.titleize} was successfully created." }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def edit
