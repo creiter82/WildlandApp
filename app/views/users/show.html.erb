@@ -1,2 +1,18 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %></h1>
+
+<div>
+  <p>Phone: <%= number_to_phone(@user.phone, area_code: true) %></p>
+  <p>Email: <%= @user.email %></p>
+  <p>Shift: <%= @user.shift %></p>
+  <p> Quals:
+    <% if @user.certifications.size > 0 %>
+      <ul>
+        <% @user.certifications.order(:acronym).each do |cert| %>
+          <li>
+            <%= cert.acronym.upcase %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </p>
+</div>
