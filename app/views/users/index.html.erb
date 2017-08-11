@@ -1,2 +1,46 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Team Member List</h1>
+
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Shift</th>
+        <th>Certs</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.order(:name).each do |user| %>
+        <tr>
+          <td><%= user.name.titleize %></td>
+          <td><%= number_to_phone(user.phone, area_code: true) %></td>
+          <td><%= user.email %></td>
+          <td><%= user.shift.capitalize %></td>
+          <td>
+            <% if user.certifications.size > 0 %>
+              <ul>
+                <% user.certifications.order(:acronym).each do |cert| %>
+                  <li>
+                    <%= cert.acronym.upcase %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to 'View', user_path(user) %>
+            <% if current_user == user %>
+              <%= link_to 'Edit', edit_user_path(user) %>
+            <% end %>
+            <%= link_to 'Delete', user_path(user),
+                                              method: :delete,
+                                              data: { confirm: "Are you sure you want to delete \'#{user.name.titleize}'?"} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
