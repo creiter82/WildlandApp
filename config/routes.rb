@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users, path: 'personnel', only: [:edit, :update, :show, :destroy]
   resources :users, path: 'personnels', only: [:index]
 
+  resources :rosters, path: 'rosters', only: [:index]
+  resources :rosters, path: 'roster', only: [:new, :create, :edit, :show, :destroy]
+
   resources :certifications, only: [:index, :new, :create, :edit, :update, :destroy]
 
   root to: 'pages#home'
