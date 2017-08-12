@@ -25,10 +25,12 @@ class RostersController < ApplicationController
   # POST /rosters.json
   def create
     @roster = Roster.new(roster_params)
+    @roster.name = "week of #{@roster.start_date.strftime("%m/%d/%Y")}"
+    @roster.end_date = @roster.start_date.end_of_week
 
     respond_to do |format|
       if @roster.save
-        format.html { redirect_to @roster, notice: 'Roster was successfully created.' }
+        format.html { redirect_to @roster, notice: "Roster for #{@roster.name} was successfully created." }
         format.json { render :show, status: :created, location: @roster }
       else
         format.html { render :new }
