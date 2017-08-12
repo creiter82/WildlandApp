@@ -2,22 +2,17 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @roster.name %>
+  <%= @roster.name.capitalize %>
 </p>
 
 <p>
   <strong>Start date:</strong>
-  <%= @roster.start_date %>
+  <%= @roster.start_date.strftime("%m/%d/%Y") %>
 </p>
 
 <p>
   <strong>End date:</strong>
-  <%= @roster.end_date %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @roster.slug %>
+  <%= @roster.end_date.strftime("%m/%d/%Y") %>
 </p>
 
 <%= link_to 'Edit', edit_roster_path(@roster) %> |
