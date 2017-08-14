@@ -3,5 +3,14 @@
   <small><%= @roster.start_date.strftime("%m/%d/%Y") %> - <%= @roster.end_date.strftime("%m/%d/%Y") %></small>
 </h1>
 
+<div>
+  <h3>Engine Boss</h3>
+  <%= form_for Availability.new do |f| %>
+    <%= f.hidden_field :roster_id, value: @roster.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit 'Signup' %>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_roster_path(@roster) %> |
 <%= link_to 'Back', rosters_path %>

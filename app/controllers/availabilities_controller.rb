@@ -7,19 +7,18 @@ class AvailabilitiesController < ApplicationController
 
     if @availability.save
       flash[:notice] = "You are signed up"
-      redirect_to :back
+      redirect_to rosters_path
     else
       flash[:danger] = "You were not signed up"
-      redirect_to :back
+      redirect_to rosters_path
     end
   end
 
   def destroy
     @availability = Availability.find(params[:id])
 
-    if @availability.destroy
-      flash[:notice] = "You were removed from the Roster"
-    end
+    @availability.destroy
+    redirect_to :back, notice: "Availability deleted"
   end
 
   private
