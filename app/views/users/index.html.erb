@@ -20,8 +20,8 @@
           <td><%= user.email %></td>
           <td><%= user.shift.capitalize %></td>
           <td>
-            <%= render 'shared/user_certs' %>
-          </td>
+            <%= render 'shared/user_certs', user: user %>
+          </td>  
           <td>
             <%= link_to 'View', user_path(user) %>
             <% if current_user == user %>
