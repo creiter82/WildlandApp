@@ -24,7 +24,7 @@ class AvailabilitiesController < ApplicationController
   private
 
     def availability_params
-      params.require(:availability).permit(:roster_id, :user_id, :position_id)
+      params.require(:availability).permit(:roster_id, :user_id)
     end
 
 end
