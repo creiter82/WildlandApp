@@ -25,7 +25,6 @@ class User < ApplicationRecord
   end
 
   def already_signed_up? roster
-    return false unless roster
     availabilities.where(roster_id: roster.id).exists?
   end
 
