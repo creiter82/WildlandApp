@@ -20,4 +20,17 @@ class User < ApplicationRecord
     self.name.split.last
   end
 
+  def can_signup? roster
+    !already_signed_up?(roster)
+  end
+
+  def already_signed_up? roster
+    return false unless roster
+    availabilities.where(roster_id: roster.id).exists?
+  end
+
+  def is_engine_boss?
+    certifications.where(name: 'engine boss').exists?
+  end
+
 end

@@ -5,11 +5,40 @@
 
 <div>
   <h3>Engine Boss</h3>
-  <%= form_for Availability.new do |f| %>
-    <%= f.hidden_field :roster_id, value: @roster.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit 'Signup' %>
+
+  <% if current_user.can_signup?(@roster) && current_user.is_engine_boss? %>
+    
+    <%= form_for Availability.new do |f| %>
+      <%= f.hidden_field :position_id, value: 1 %>
+      <%= f.hidden_field :roster_id, value: @roster.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit 'Signup' %>
+    <% end %>
+
   <% end %>
+
+  <% @engine_bosses.each do |available| %>
+    <p><%= available.user.name %></p>
+  <% end %>
+
+  <h3>Firefighter</h3>
+
+  <% if current_user.can_signup?(@roster) && !current_user.is_engine_boss? %>
+    
+    <%= form_for Availability.new do |f| %>
+      <%= f.hidden_field :position_id, value: 2 %>
+      <%= f.hidden_field :roster_id, value: @roster.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit 'Signup' %>
+    <% end %>
+
+  <% end %>  
+
+  <% @firefighters.each do |available| %>
+    <p><%= available.user.name %></p>
+  <% end %>
+
+
 </div>
 
 <%= link_to 'Edit', edit_roster_path(@roster) %> |
