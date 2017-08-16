@@ -10,8 +10,8 @@ class RostersController < ApplicationController
   # GET /rosters/1
   # GET /rosters/1.json
   def show
-    @engine_bosses = Availability.where(roster_id: @roster.id, availability_position_id: 1)
-    @firefighters = Availability.where(roster_id: @roster.id, availability_position_id: 2)
+    @engine_boss = AvailabilityPosition.find_by_name('engine boss')
+    @firefighter = AvailabilityPosition.find_by_name('firefighter')
   end
 
   # GET /rosters/new
