@@ -6,7 +6,7 @@ class Roster < ApplicationRecord
   has_many :users, through: :availabilities
 
   def set_availability_position position
-    availabilities.where(availability_position_id: position.id)
+    availabilities.where(availability_position_id: position.id).order(:created_at)
   end
 
 end
