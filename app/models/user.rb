@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :certifications, through: :user_certifications 
 
   has_many :availabilities
-  has_many :rosters, through: :availabilities  
+  has_many :rosters, through: :availabilities 
+  has_many :availability_positions, through: :availabilities 
 
   has_many :team_deployments
   has_many :deployments, through: :team_deployments  
