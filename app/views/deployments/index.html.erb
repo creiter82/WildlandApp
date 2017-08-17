@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Deployments</h1>
 
 <table>
@@ -7,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Location</th>
+      <th>Personnel</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +15,17 @@
       <tr>
         <td><%= deployment.name %></td>
         <td><%= deployment.location %></td>
+        <td>
+          <% if deployment.users.count > 0 %>
+            <ul>
+              <% deployment.users.each do |user| %>
+                <li>
+                  <%= user.name.titleize %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', deployment %></td>
         <td><%= link_to 'Edit', edit_deployment_path(deployment) %></td>
         <td><%= link_to 'Destroy', deployment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

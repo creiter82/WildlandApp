@@ -21,6 +21,21 @@
     <%= f.text_area :location %>
   </div>
 
+  <%= fields_for(@deployment, @deployment.team_deployments.build) do |f| %>
+    <div class="form-group">
+      <%= f.label :users, class: "col-sm-4 control-label" %>
+      <div class="collection-check-box col-sm-8">
+        <%= f.collection_check_boxes :user_ids, User.all, 
+                                      :id, :name do |b| %>
+          <div class="check-box form-control no-border">                            
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>  
+      </div>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
