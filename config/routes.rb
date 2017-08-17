@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users, path: 'personnels', only: [:index]
 
   resources :rosters
+  
+  resources :deployments
 
   resources :certifications, only: [:index, :new, :create, :edit, :update, :destroy]
 
