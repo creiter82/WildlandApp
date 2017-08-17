@@ -69,6 +69,6 @@ class DeploymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deployment_params
-      params.require(:deployment).permit(:name, :location)
+      params.require(:deployment).permit(:name, :location, :slug)
     end
 end
