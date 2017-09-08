@@ -17,8 +17,8 @@
 
   <% end %>
 
-  <% @roster.set_availability_position(@engine_boss).each do |available| %>
-    <p><%= available.user.name %></p>
+  <% @engine_bosses.each do |available| %>
+    <p><%= available.name %></p>
   <% end %>
 
   <h3>Firefighter</h3>
@@ -34,8 +34,8 @@
 
   <% end %>  
 
-  <% @roster.set_availability_position(@firefighter).each do |available| %>
-    <p><%= available.user.name %></p>
+  <% @ffs.each do |available| %>
+    <p><%= available.name %></p>
   <% end %>
 
 

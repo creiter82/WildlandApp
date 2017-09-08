@@ -7,7 +7,7 @@ class AvailabilitiesController < ApplicationController
 
     if @availability.save
       flash[:notice] = "You are signed up"
-      redirect_to rosters_path
+      redirect_to :back
     else
       flash[:danger] = "You were not signed up"
       redirect_to rosters_path
