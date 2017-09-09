@@ -1,39 +1,29 @@
-<h1>Deployments</h1>
+<div class="container">  
+  <h1>Deployments</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Personnel</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h2><%= link_to 'New Deployment', new_deployment_path, class: 'btn btn-outline-primary' %></h2>
 
-  <tbody>
+  <div class="row">
     <% @deployments.each do |deployment| %>
-      <tr>
-        <td><%= deployment.name %></td>
-        <td><%= deployment.location %></td>
-        <td>
-          <% if deployment.users.count > 0 %>
-            <ul>
-              <% deployment.users.each do |user| %>
-                <li>
+      <div class="col-md-4">
+        <div class="card w-100">
+          <div class="card-body">
+            <h4 class="card-title"><%= deployment.name.titleize %></h4>
+            <h6 class="card-subtitle mb-2 text-muted"><%= deployment.location.titleize %></h6>
+            <p class="card-text">
+              <strong>Personnel:</strong>
+              <% if deployment.users.count > 0 %>
+                <% deployment.users.each do |user| %>
                   <%= user.name.titleize %>
-                </li>
+                <% end %>
               <% end %>
-            </ul>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', deployment %></td>
-        <td><%= link_to 'Edit', edit_deployment_path(deployment) %></td>
-        <td><%= link_to 'Destroy', deployment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+            </p>
+            <%= link_to 'View', deployment, class: 'btn btn-sm btn-outline-success' %>
+            <%= link_to 'Edit', edit_deployment_path(deployment), class: 'btn btn-sm btn-outline-warning' %>
+            <%= link_to 'Destroy', deployment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+          </div>
+        </div>
+      </div>  
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Deployment', new_deployment_path %>
+  </div>  
+</div>  
