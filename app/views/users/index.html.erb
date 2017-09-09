@@ -1,38 +1,40 @@
-<h1>Team Member List</h1>
+<div class="container">  
+  <h1>Team Member List</h1>
 
-<div>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Shift</th>
-        <th>Certs</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
+  <div>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= user.name.titleize %></td>
-          <td><%= number_to_phone(user.phone, area_code: true) %></td>
-          <td><%= user.email %></td>
-          <td><%= user.shift.capitalize %></td>
-          <td>
-            <%= render 'shared/user_certs', user: user %>
-          </td>  
-          <td>
-            <%= link_to 'View', user_path(user) %>
-            <% if current_user == user %>
-              <%= link_to 'Edit', edit_user_path(user) %>
-            <% end %>
-            <%= link_to 'Delete', user_path(user),
-                                              method: :delete,
-                                              data: { confirm: "Are you sure you want to delete \'#{user.name.titleize}'?"} %>
-          </td>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Shift</th>
+          <th>Certs</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name.titleize %></td>
+            <td><%= number_to_phone(user.phone, area_code: true) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.shift.capitalize %></td>
+            <td>
+              <%= render 'shared/user_certs', user: user %>
+            </td>  
+            <td>
+              <%= link_to 'View', user_path(user) %>
+              <% if current_user == user %>
+                <%= link_to 'Edit', edit_user_path(user) %>
+              <% end %>
+              <%= link_to 'Delete', user_path(user),
+                                                method: :delete,
+                                                data: { confirm: "Are you sure you want to delete \'#{user.name.titleize}'?"} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>  

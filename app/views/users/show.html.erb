@@ -5,6 +5,6 @@
   <p>Email: <%= @user.email %></p>
   <p>Shift: <%= @user.shift %></p>
   <p> Quals:
-    <%= render 'shared/user_certs' %>
+    <%= render 'shared/user_certs', user: @user %>
   </p>
 </div>
