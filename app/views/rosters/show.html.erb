@@ -1,45 +1,68 @@
-<h1>
-  Roster for the <%= @roster.name.capitalize %><br />
-  <small><%= @roster.start_date.strftime("%m/%d/%Y") %> - <%= @roster.end_date.strftime("%m/%d/%Y") %></small>
-</h1>
+<div class="container roster-container">  
+  <h1>
+    Roster for the <%= @roster.name.capitalize %><br />
+    <small>Roster Dates: <%= @roster.start_date.strftime("%m/%d/%Y") %> - <%= @roster.end_date.strftime("%m/%d/%Y") %></small>
+  </h1>
 
-<div>
-  <h3>Engine Boss</h3>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card w-100">
+        <div class="card-body">
+          <h4 class="card-title">Engine Bosses</h4>
+          <p class="card-text">
+            <% if current_user.can_signup?(@roster) && current_user.is_engine_boss? %>
+              
+              <%= form_for Availability.new do |f| %>
+                <%= f.hidden_field :availability_position_id, value: @engine_boss.id %>
+                <%= f.hidden_field :roster_id, value: @roster.id %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.submit 'Signup', class: 'btn btn-sm btn-outline-primary' %>
+              <% end %>
 
-  <% if current_user.can_signup?(@roster) && current_user.is_engine_boss? %>
-    
-    <%= form_for Availability.new do |f| %>
-      <%= f.hidden_field :availability_position_id, value: @engine_boss.id %>
-      <%= f.hidden_field :roster_id, value: @roster.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit 'Signup' %>
-    <% end %>
+            <% end %>
 
-  <% end %>
+            <% @engine_bosses.each do |available| %>
+              <p><%= available.name.titleize %> <%= number_to_phone(available.phone, area_code: true) %>
+                <% if current_user == available %>
+                  <%= link_to 'Remove', availability_path(available.availabilities.find_by(roster_id: @roster.id)), method: :delete, data: { confirm: "Remove #{available.first_name} from roster?" }, class: 'btn btn-sm btn-outline-danger' %>
+                <% end %>
+              </p>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>  
 
-  <% @engine_bosses.each do |available| %>
-    <p><%= available.name %></p>
-  <% end %>
+    <div class="col-sm-6">
+      <div class="card w-100">
+        <div class="card-body">
+          <h4 class="card-title">Firefighters</h4>
+          <p class="card-text">
+            <% if current_user.can_signup?(@roster) && !current_user.is_engine_boss? %>
+              
+              <%= form_for Availability.new do |f| %>
+                <%= f.hidden_field :availability_position_id, value: @firefighter.id %>
+                <%= f.hidden_field :roster_id, value: @roster.id %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.submit 'Signup', class: 'btn btn-sm btn-outline-primary' %>
+              <% end %>
 
-  <h3>Firefighter</h3>
+            <% end %>  
 
-  <% if current_user.can_signup?(@roster) && !current_user.is_engine_boss? %>
-    
-    <%= form_for Availability.new do |f| %>
-      <%= f.hidden_field :availability_position_id, value: @firefighter.id %>
-      <%= f.hidden_field :roster_id, value: @roster.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit 'Signup' %>
-    <% end %>
-
-  <% end %>  
-
-  <% @ffs.each do |available| %>
-    <p><%= available.name %></p>
-  <% end %>
+            <% @ffs.each do |available| %>
+              <p><%= available.name.titleize %> <%= number_to_phone(available.phone, area_code: true) %>
+                <% if current_user == available %>
+                  <%= link_to 'Remove', availability_path(available.availabilities.find_by(roster_id: @roster.id)), method: :delete, data: { confirm: "Remove #{available.first_name} from roster?" }, class: 'btn btn-sm btn-outline-danger' %>
+                <% end %></p>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>  
 
 
-</div>
+  </div>
 
-<%= link_to 'Edit', edit_roster_path(@roster) %> |
-<%= link_to 'Back', rosters_path %>
+  <%= link_to 'Edit', edit_roster_path(@roster) %> |
+  <%= link_to 'Back', rosters_path %>
+</div>  
