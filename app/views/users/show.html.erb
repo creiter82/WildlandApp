@@ -1,10 +1,24 @@
-<h1><%= @user.name %></h1>
+<div class="container">  
+  <h1><%= @user.name.titleize %></h1>
 
-<div>
-  <p>Phone: <%= number_to_phone(@user.phone, area_code: true) %></p>
-  <p>Email: <%= @user.email %></p>
-  <p>Shift: <%= @user.shift %></p>
-  <p> Quals:
-    <%= render 'shared/user_certs', user: @user %>
-  </p>
-</div>
+  <div>
+    <p>Phone: <%= number_to_phone(@user.phone, area_code: true) %></p>
+    <p>Email: <%= @user.email %></p>
+    <p>Shift: <%= @user.shift %></p>
+    <p> Quals:
+      <%= render 'shared/user_certs', user: @user %>
+    </p>
+    <p>
+      Deployments: <%= @user.deployments_count %>
+      <% if @user.deployments_count > 0 %>
+        <% @user.deployments.each do |deployment| %>    
+          <ul>
+            <li>
+              <%= deployment.name.titleize %>
+            </li>
+          </ul>
+        <% end %>  
+      <% end %>  
+    </p>
+  </div>
+</div>  

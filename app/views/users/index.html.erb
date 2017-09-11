@@ -10,6 +10,7 @@
           <th>Email</th>
           <th>Shift</th>
           <th>Certs</th>
+          <th>Deployments</th>
           <th></th>
         </tr>
       </thead>
@@ -22,6 +23,9 @@
             <td><%= user.shift.capitalize %></td>
             <td>
               <%= render 'shared/user_certs', user: user %>
+            </td>
+            <td>
+              <%= user.deployments_count %>
             </td>  
             <td>
               <%= link_to 'View', user_path(user) %>
