@@ -1,42 +1,70 @@
-<%= form_for(deployment) do |f| %>
-  <% if deployment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
+<% if deployment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
 
-      <ul>
-      <% deployment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-
-  <%= fields_for(@deployment, @deployment.team_deployments.build) do |f| %>
-    <div class="form-group">
-      <%= f.label :users, class: "col-sm-4 control-label" %>
-      <div class="collection-check-box col-sm-8">
-        <%= f.collection_check_boxes :user_ids, User.all, 
-                                      :id, :name do |b| %>
-          <div class="check-box form-control no-border">                            
-            <%= b.check_box %>
-            <%= b.label %>
-          </div>
-        <% end %>  
-      </div>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+    <ul>
+    <% deployment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
+
+<div class="container">
+  <%= form_for(deployment, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+
+    <div class="form-group row">
+      <%= f.label :name, class: 'col-sm-2 col-form-label' %>
+      <div class="col-6">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>  
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :location, class: 'col-sm-2 col-form-label' %>
+      <div class="col-6">
+        <%= f.text_field :location, class: 'form-control' %>
+      </div>  
+    </div>
+
+    <%= fields_for(@deployment, @deployment.team_deployments.build) do |f| %>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="form-check">
+            <%= f.label :users, 'Engine Bosses', class: 'highlight' %>
+            <div class="collection-check-box col-sm-8">
+              <%= f.collection_check_boxes :user_ids, @engine_bosses, 
+                                            :id, :name do |b| %>
+                <div class="collection-check-box form-check-label">                            
+                  <%= b.check_box %>
+                  <%= b.label %>
+                </div>
+              <% end %>  
+            </div>
+          </div>  
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="form-check">
+            <%= f.label :users, 'Firefighters', class: 'highlight' %>
+            <div class="collection-check-box col-sm-8">
+              <%= f.collection_check_boxes :user_ids, @ffs, 
+                                            :id, :name do |b| %>
+                <div class="collection-check-box form-check-label">                            
+                  <%= b.check_box %>
+                  <%= b.label %>
+                </div>
+              <% end %>  
+            </div>
+          </div>  
+        </div>
+      </div>  
+
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit 'Create Deployments', class: "btn btn-sm btn-outline-success" %>
+    </div>
+  <% end %>
+</div>  

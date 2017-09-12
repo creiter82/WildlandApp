@@ -14,6 +14,8 @@ class RostersController < ApplicationController
     @firefighter = AvailabilityPosition.find_by_name('firefighter')
     @engine_bosses = User.joins(:availabilities).where(availabilities: { availability_position_id: @engine_boss.id, roster_id: @roster.id }).order(:deployments_count, Availability.arel_table[:created_at])
     @ffs = User.joins(:availabilities).where(availabilities: { availability_position_id: @firefighter.id, roster_id: @roster.id }).order(:deployments_count, Availability.arel_table[:created_at])
+
+    @deployment = Deployment.new
   end
 
   # GET /rosters/new

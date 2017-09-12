@@ -4,6 +4,9 @@
     <small>Roster Dates: <%= @roster.start_date.strftime("%m/%d/%Y") %> - <%= @roster.end_date.strftime("%m/%d/%Y") %></small>
   </h1>
 
+  <%= link_to 'Edit', edit_roster_path(@roster) %> |
+  <%= link_to 'Back', rosters_path %>
+
   <div class="row">
     <div class="col-sm-6">
       <div class="card w-100">
@@ -59,10 +62,34 @@
         </div>
       </div>
     </div>  
-
-
   </div>
 
-  <%= link_to 'Edit', edit_roster_path(@roster) %> |
-  <%= link_to 'Back', rosters_path %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+    New Deployment
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-lg modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Deployment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render "deployments/form", deployment: @deployment %>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <%#= link_to 'New Deployment', new_deployment_path, class: 'btn btn-outline-primary' %>
+
 </div>  
