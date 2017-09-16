@@ -3,6 +3,6 @@ jQuery(function() {
   $("a[rel~=tooltip], .has-tooltip").tooltip();
 });
 
-$('#exampleModal').modal({
+$('#rosterModal').modal({
     show: 'true'
 });
