@@ -1,6 +1,8 @@
 @import "bootstrap";
 @import "font-awesome";
 
+$warning: #ffc107;
+
 body {
   min-height: 75rem;
   padding-top: 5rem;
@@ -22,4 +24,18 @@ body {
 .highlight {
   font-size: 22px;
   color: #007bff;
+}
+
+.edit-btn {
+  color: $warning;
+  &:hover {
+    color: darken($warning, 10%);
+  }
+}
+
+
+// Roster //
+
+.roster-card {
+  margin-top: 40px;
 }
