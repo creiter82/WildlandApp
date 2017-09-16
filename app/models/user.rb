@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   validates_presence_of :name
 
-  scope :by_name, -> { all.to_a.sort_by(&:first_name) }
+  scope :by_name, -> { all.to_a.sort_by(&:last_name) }
 
   def first_name
     self.name.split.first
