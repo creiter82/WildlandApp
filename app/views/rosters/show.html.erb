@@ -9,84 +9,13 @@
   
 
   <div class="row roster-card">
-    <div class="col-sm-6">
-      <div class="card w-100">
-        <div class="card-body">
-          <h4 class="card-title">Engine Bosses</h4>
-          <p class="card-text">
-            <% if current_user.can_signup?(@roster) && current_user.is_engine_boss? %>
-              
-              <%= form_for Availability.new do |f| %>
-                <%= f.hidden_field :availability_position_id, value: @engine_boss.id %>
-                <%= f.hidden_field :roster_id, value: @roster.id %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.submit 'Signup', class: 'btn btn-sm btn-outline-primary' %>
-              <% end %>
+    
+    <%= render 'position_availability', title: 'Engine Bosses', position_type: current_user.is_engine_boss?, position: @engine_boss, users: @engine_bosses %>  
 
-            <% end %>
+    <%= render 'position_availability', title: 'Firefighters', position_type: !current_user.is_engine_boss?, position: @firefighter, users: @ffs %>
 
-            <% @engine_bosses.each do |available| %>
-              <p><%= available.name.titleize %> <%= number_to_phone(available.phone, area_code: true) %>
-                <% if current_user == available %>
-                  <%= link_to 'Remove', availability_path(available.availabilities.find_by(roster_id: @roster.id)), method: :delete, data: { confirm: "Remove #{available.first_name} from roster?" }, class: 'btn btn-sm btn-outline-danger' %>
-                <% end %>
-              </p>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </div>  
-
-    <div class="col-sm-6">
-      <div class="card w-100">
-        <div class="card-body">
-          <h4 class="card-title">Firefighters</h4>
-          <p class="card-text">
-            <% if current_user.can_signup?(@roster) && !current_user.is_engine_boss? %>
-              
-              <%= form_for Availability.new do |f| %>
-                <%= f.hidden_field :availability_position_id, value: @firefighter.id %>
-                <%= f.hidden_field :roster_id, value: @roster.id %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.submit 'Signup', class: 'btn btn-sm btn-outline-primary' %>
-              <% end %>
-
-            <% end %>  
-
-            <% @ffs.each do |available| %>
-              <p><%= available.name.titleize %> <%= number_to_phone(available.phone, area_code: true) %>
-                <% if current_user == available %>
-                  <%= link_to 'Remove', availability_path(available.availabilities.find_by(roster_id: @roster.id)), method: :delete, data: { confirm: "Remove #{available.first_name} from roster?" }, class: 'btn btn-sm btn-outline-danger' %>
-                <% end %></p>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </div>  
   </div>
 
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#rosterModal">
-    New Deployment
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="rosterModal" tabindex="-1" role="dialog" aria-labelledby="rosterModalLabel" aria-hidden="true">
-    <div class="modal-lg modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="rosterModalLabel">New Deployment</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= render "deployments/form", deployment: @deployment %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <%#= link_to 'New Deployment', new_deployment_path, class: 'btn btn-outline-primary' %>
+  <%= render 'deploy_modal' %>
 
 </div>  

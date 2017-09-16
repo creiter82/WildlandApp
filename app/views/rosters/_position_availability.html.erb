@@ -1,0 +1,27 @@
+<div class="col-sm-6">
+  <div class="card w-100">
+    <div class="card-body">
+      <h4 class="card-title"><%= title %></h4>
+      <p class="card-text">
+        <% if current_user.can_signup?(@roster) && position_type %>
+          
+          <%= form_for Availability.new do |f| %>
+            <%= f.hidden_field :availability_position_id, value: position.id %>
+            <%= f.hidden_field :roster_id, value: @roster.id %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit 'Signup', class: 'btn btn-sm btn-outline-primary' %>
+          <% end %>
+
+        <% end %>
+
+        <% users.each do |available| %>
+          <p><%= available.name.titleize %> <%= number_to_phone(available.phone, area_code: true) %>
+            <% if current_user == available %>
+              <%= link_to 'Remove', availability_path(available.availabilities.find_by(roster_id: @roster.id)), method: :delete, data: { confirm: "Remove #{available.first_name} from roster?" }, class: 'btn btn-sm btn-outline-danger' %>
+            <% end %>
+          </p>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
