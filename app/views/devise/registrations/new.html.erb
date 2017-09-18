@@ -11,45 +11,45 @@
 
         <div class="form-row">
 
-            <div class="form-group col-md-6">
-              <%= f.label :name, class: 'col-form-label' %>
-              <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-            </div> 
+          <div class="form-group col-md-6">
+            <%= f.label :name, class: 'col-form-label' %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          </div> 
 
-            <div class="form-group col-md-6">
-              <%= f.label :email, class: 'col-form-label' %>
-              <%= f.email_field :email, class: 'form-control' %>
-            </div> 
+          <div class="form-group col-md-6">
+            <%= f.label :email, class: 'col-form-label' %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div> 
 
         </div>  
 
         <div class="form-row">
 
-            <div class="form-group col-md-6">
-              <%= f.label :phone, class: 'col-form-label' %>
-              <%= f.text_field :phone, class: 'form-control' %>
-            </div> 
+          <div class="form-group col-md-6">
+            <%= f.label :phone, class: 'col-form-label' %>
+            <%= f.text_field :phone, class: 'form-control' %>
+          </div> 
 
-            <div class="form-group col-md-6">
-              <%= f.label :shift, class: 'col-form-label' %>
-              <div>
-                <%= f.select(:shift, options_for_select([["Select Shift", ""], ['Admin', 'Admin'], ['A', 'A'], ['B', 'B'], ['C', 'C']]), class: 'custom-select') %>
-              </div>  
-            </div> 
+          <div class="form-group col-md-6">
+            <%= f.label :shift, class: 'col-form-label' %>
+            <div>
+              <%= f.select(:shift, options_for_select([["Select Shift", ""], ['Admin', 'Admin'], ['A', 'A'], ['B', 'B'], ['C', 'C']]), class: 'custom-select') %>
+            </div>  
+          </div> 
 
         </div>    
 
         <div class="form-row">
 
-            <div class="form-group col-md-6">
-              <%= f.label :password, class: 'col-form-label' %>
-              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-            </div>
+          <div class="form-group col-md-6">
+            <%= f.label :password, class: 'col-form-label' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          </div>
 
-            <div class="form-group col-md-6">
-              <%= f.label :password_confirmation, class: 'col-form-label' %>
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-            </div> 
+          <div class="form-group col-md-6">
+            <%= f.label :password_confirmation, class: 'col-form-label' %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+          </div> 
 
         </div>    
 
