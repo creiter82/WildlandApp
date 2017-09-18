@@ -12,7 +12,9 @@ class User < ApplicationRecord
   has_many :availability_positions, through: :availabilities 
 
   has_many :team_deployments
-  has_many :deployments, through: :team_deployments  
+  has_many :deployments, through: :team_deployments
+
+  before_save :downcase_name  
 
   validates_presence_of :name
 
@@ -36,6 +38,10 @@ class User < ApplicationRecord
 
   def is_engine_boss?
     certifications.where(name: 'engine boss').exists?
+  end
+
+  def downcase_name
+    self.name.downcase!
   end
 
 end
