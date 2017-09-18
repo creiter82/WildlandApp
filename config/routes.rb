@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :users, path: 'personnel', only: [:edit, :update, :show, :destroy]
-  resources :users, path: 'personnels', only: [:index]
+  resources :users, path: 'personnel', only: [:index]
 
   resources :rosters
   
   resources :deployments
 
-  resources :certifications, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :certifications, path: 'quals', only: [:index, :new, :create, :edit, :update, :destroy]
 
   root to: 'pages#home'
 
