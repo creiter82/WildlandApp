@@ -1,5 +1,5 @@
 <% if user.certifications.count > 0 %>
-  <ul>
+  <ul class="quals">
     <% user.certifications.order(:acronym).each do |cert| %>
       <li>
         <%= cert.acronym.upcase %>
