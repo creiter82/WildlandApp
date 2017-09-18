@@ -20,6 +20,10 @@ class User < ApplicationRecord
 
   scope :by_name, -> { all.to_a.sort_by(&:last_name) }
 
+  def phone=(value)
+    super(value.blank? ? nil : value.gsub(/[^\w\s]/, '')) 
+  end
+
   def first_name
     self.name.split.first
   end
