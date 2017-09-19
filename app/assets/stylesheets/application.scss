@@ -16,6 +16,14 @@ body {
   color: white;
 }
 
+.navbar-dark {
+  .navbar-nav {
+    .user-nav-link {
+      font-size: 14px;
+    }
+  }
+}
+
 .roster-container {
   small {
     font-size: 20px;
