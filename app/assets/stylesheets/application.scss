@@ -2,6 +2,29 @@
 @import "font-awesome";
 
 $warning: #ffc107;
+$danger: #dc3545;
+$success: #28a745;
+
+
+// Shift Colors //
+
+.A {
+  color: black;
+}
+
+.B {
+  color: $danger;
+}
+
+.C {
+  color: $success;
+}
+
+.Admin {
+  color: $warning;
+}
+
+//
 
 body {
   // min-height: 75rem;

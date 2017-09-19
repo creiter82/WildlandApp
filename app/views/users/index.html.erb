@@ -20,7 +20,7 @@
             <td><%= user.name.titleize %></td>
             <td><%= number_to_phone(user.phone, area_code: true) %></td>
             <td><%= user.email %></td>
-            <td><%= user.shift.capitalize %></td>
+            <td class="<%= user.shift %>"><%= user.shift %></td>
             <td>
               <%= render 'shared/user_certs', user: user %>
             </td>

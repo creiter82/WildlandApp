@@ -4,7 +4,7 @@
   <div>
     <p>Phone: <%= number_to_phone(@user.phone, area_code: true) %></p>
     <p>Email: <%= @user.email %></p>
-    <p>Shift: <%= @user.shift %></p>
+    <p>Shift: <em class="<%= @user.shift %>"><%= @user.shift %></em></p>
     <p> Quals:
       <%= render 'shared/user_certs', user: @user %>
     </p>
