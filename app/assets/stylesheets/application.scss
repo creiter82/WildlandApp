@@ -1,9 +1,11 @@
 @import "bootstrap";
 @import "font-awesome";
+@import "bootstrap-datetimepicker";
 
 $warning: #ffc107;
 $danger: #dc3545;
 $success: #28a745;
+$blue: #007bff;
 
 
 // Shift Colors //
@@ -84,3 +86,18 @@ body {
 .roster-card {
   margin: 40px 0;
 }
+
+.bootstrap-datetimepicker-widget table td.day {
+  color: $blue;
+}
+
+.bootstrap-datetimepicker-widget table td.disabled {
+  color: gray;
+}
+
+.bootstrap-datetimepicker-widget table td.old {
+  color: gray;
+}
+
+
+

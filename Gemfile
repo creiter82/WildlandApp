@@ -37,4 +37,6 @@ gem 'devise', '~> 4.3'
 gem 'friendly_id', '~> 5.1.0'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
