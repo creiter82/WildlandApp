@@ -21,7 +21,7 @@ document.addEventListener("turbolinks:load", function() {
         next: 'fa fa-caret-right',
         close: 'fa fa-close'
       },
-      // debug:true
+      // debug:true Keeps picker open
     });
   });
 })
