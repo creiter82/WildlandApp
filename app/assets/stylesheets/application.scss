@@ -66,6 +66,13 @@ body {
   }
 }
 
+.delete-btn {
+  color: $danger;
+  &:hover {
+    color: darken($danger, 10%);
+  }
+}
+
 // Users //
 
 .registration-card {
