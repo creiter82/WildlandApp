@@ -5,4 +5,7 @@ class Deployment < ApplicationRecord
   has_many :team_deployments, dependent: :destroy
   has_many :users, through: :team_deployments
   has_many :rosters, through: :team_deployments
+
+  mount_uploader :feature_image, ImageUploader
+  mount_uploaders :images, ImageUploader
 end

@@ -27,6 +27,8 @@
       </div>  
     </div>
 
+    <%= f.hidden_field :roster_id, value: @roster.id %>
+
     <%= fields_for(@deployment, @deployment.team_deployments.build) do |f| %>
 
       <div class="form-row">
@@ -63,8 +65,23 @@
 
     <% end %>
 
+    <hr>
+
+    <div class="form-group col-md-6">
+      <label class="btn btn-sm btn-outline-primary">
+        Upload feature image <%= f.file_field :feature_image, style: 'display:none' %>
+      </label>
+      <img id="img_prev" src="#" />
+    </div> 
+
+    <div class="form-group col-md-6">
+      <label class="btn btn-sm btn-outline-primary">
+        Upload multiple images <%= f.file_field :images, multiple: true, style: 'display:none' %>
+      </label>
+    </div> 
+
     <div class="actions">
-      <%= f.submit 'Create Deployment', class: "btn btn-sm btn-outline-success" %>
+      <%= f.submit class: "btn btn-sm btn-outline-success" %>
     </div>
   <% end %>
 </div>  

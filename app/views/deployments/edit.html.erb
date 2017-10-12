@@ -1,6 +1,10 @@
-<h1>Editing Deployment</h1>
+<div class="container">  
 
-<%= render 'form', deployment: @deployment %>
+  <h1 class="mb-3">Editing <%= @deployment.name.titleize %> Deployment</h1>
 
-<%= link_to 'Show', @deployment %> |
-<%= link_to 'Back', deployments_path %>
+  <%= render 'form', deployment: @deployment %>
+
+  <%= link_to 'Show', @deployment %> |
+  <%= link_to 'Back', deployments_path %>
+
+</div>  

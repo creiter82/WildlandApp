@@ -19,6 +19,11 @@ class DeploymentsController < ApplicationController
 
   # GET /deployments/1/edit
   def edit
+    @roster = Roster.find(@deployment.roster_id)
+    @engine_boss = AvailabilityPosition.find_by_name('engine boss')
+    @firefighter = AvailabilityPosition.find_by_name('firefighter')
+    @engine_bosses = User.joins(:availabilities).where(availabilities: { availability_position_id: @engine_boss.id, roster_id: @roster.id }).order(:deployments_count, Availability.arel_table[:created_at])
+    @ffs = User.joins(:availabilities).where(availabilities: { availability_position_id: @firefighter.id, roster_id: @roster.id }).order(:deployments_count, Availability.arel_table[:created_at])
   end
 
   # POST /deployments
@@ -69,6 +74,6 @@ class DeploymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deployment_params
-      params.require(:deployment).permit(:name, :location, :slug, roster_ids:[], user_ids:[])
+      params.require(:deployment).permit(:name, :location, :slug, :feature_image, {images: []}, roster_ids:[], user_ids:[])
     end
 end

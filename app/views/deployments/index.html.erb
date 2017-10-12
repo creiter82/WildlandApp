@@ -1,14 +1,16 @@
 <div class="container">  
-  <h1>Deployments</h1>
+  <h1 class="text-center">Deployments</h1>
 
   <div class="row">
     <% @deployments.each do |deployment| %>
       <div class="col-md-4">
         <div class="card w-100">
+          <% if deployment.feature_image %>
+            <%= image_tag deployment.feature_image, class: 'card-img-top', width: '100%' %>
+          <% end %>  
           <div class="card-body">
-            <h4 class="card-title"><%= deployment.name.titleize %></h4>
-            <h6 class="card-subtitle mb-2 text-muted"><%= deployment.location.titleize %></h6>
-            <p class="card-subtitle mb-2 text-muted"><%= deployment.created_at.strftime('%m/%d/%Y') %></p>
+            <h4 class="card-title mb-1"><%= deployment.name.titleize %> <small class="text-muted"><%= deployment.location.titleize %></small></h4>
+            <p class="card-subtitle text-muted"><%= deployment.created_at.strftime('%m/%d/%Y') %></p>
             <p class="card-text">
               <strong>Personnel:</strong>
               <% if deployment.users.count > 0 %>

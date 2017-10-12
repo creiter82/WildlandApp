@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908154002) do
+ActiveRecord::Schema.define(version: 20171012211606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,12 @@ ActiveRecord::Schema.define(version: 20170908154002) do
   create_table "deployments", force: :cascade do |t|
     t.string   "name"
     t.text     "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "slug"
+    t.string   "feature_image"
+    t.json     "images"
+    t.integer  "roster_id"
     t.index ["slug"], name: "index_deployments_on_slug", unique: true, using: :btree
   end
 
