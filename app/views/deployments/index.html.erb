@@ -8,7 +8,7 @@
           <div class="card-body">
             <h4 class="card-title"><%= deployment.name.titleize %></h4>
             <h6 class="card-subtitle mb-2 text-muted"><%= deployment.location.titleize %></h6>
-            <p class="card-text mb-2 text-muted"><%= deployment.created_at.strftime('%m/%d/%Y') %></p>
+            <p class="card-subtitle mb-2 text-muted"><%= deployment.created_at.strftime('%m/%d/%Y') %></p>
             <p class="card-text">
               <strong>Personnel:</strong>
               <% if deployment.users.count > 0 %>
