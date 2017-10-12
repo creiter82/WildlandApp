@@ -39,4 +39,6 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'mini_magick', '~> 4.8'
 
