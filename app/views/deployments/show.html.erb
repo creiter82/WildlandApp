@@ -2,9 +2,9 @@
 
   <p id="notice"><%= notice %></p>
 
-  <h1><%= @deployment.name.titleize %> <small class="muted"><%= @deployment.location.titleize %></small></h1>
+  <h1 class="mb-0"><%= @deployment.name.titleize %> <small class="muted"><%= @deployment.location.titleize %></small></h1>
 
-  <p><strong>Date Deployed</strong> <%= @deployment.created_at.strftime('%m/%d/%Y') %>
+  <h5 class="mb-3 muted"><%= @deployment.created_at.strftime('%m/%d/%Y') %></h5>
 
   <div>  
     <h4>Personnel Deployed</h4>
