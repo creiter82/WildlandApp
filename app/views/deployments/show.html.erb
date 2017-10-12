@@ -4,6 +4,8 @@
 
   <h1><%= @deployment.name.titleize %> <small class="muted"><%= @deployment.location.titleize %></small></h1>
 
+  <p><strong>Date Deployed</strong> <%= @deployment.created_at.strftime('%m/%d/%Y') %>
+
   <div>  
     <h4>Personnel Deployed</h4>
     <% @deployment.team_deployments.each do |p| %>
