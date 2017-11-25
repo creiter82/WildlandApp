@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="container">
-  <%= form_for(deployment, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+  <%= form_for(deployment, :html => {class: 'form-horizontal', role: 'form', multipart: true}) do |f| %>
 
     <div class="form-group row">
       <%= f.label :name, class: 'col-sm-2 col-form-label' %>
@@ -69,16 +69,19 @@
 
     <div class="form-group col-md-6">
       <label class="btn btn-sm btn-outline-primary">
-        Upload feature image <%= f.file_field :feature_image, style: 'display:none' %>
-      </label>
-      <img id="img_prev" src="#" />
+        Upload feature image <%= f.file_field :feature_image, style: 'display:none', onchange: "previewFeatureImage();" %>
+      </label><br />
+      <img id="feature_prev" src="#" height="200" />
     </div> 
 
     <div class="form-group col-md-6">
       <label class="btn btn-sm btn-outline-primary">
-        Upload multiple images <%= f.file_field :images, multiple: true, style: 'display:none' %>
+        Upload multiple images <%= f.file_field :images, style: 'display:none', multiple: true %>
       </label>
+      <div id="preview"></div>
     </div> 
+
+    <hr>
 
     <div class="actions">
       <%= f.submit class: "btn btn-sm btn-outline-success" %>
