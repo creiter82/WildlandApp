@@ -74,6 +74,6 @@ class DeploymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deployment_params
-      params.require(:deployment).permit(:name, :location, :slug, :feature_image, {images: []}, roster_ids:[], user_ids:[])
+      params.require(:deployment).permit(:name, :location, :slug, :feature_image, {images: []}, :roster_id, user_ids:[])
     end
 end

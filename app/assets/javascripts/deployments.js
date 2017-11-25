@@ -61,11 +61,12 @@ window.onload = function() {
         imgReader.addEventListener('load', function(e1) {
           var img = e1.target;
           var div = document.createElement('div');
-          div.className = 'thumbnail';
+          div.className = 'col-md-2';
           div.innerHTML = [
-            '<img src="' + img.result + '"' + 'title="' + img.fileName + '"/>',
+            '<img src="' + img.result + '"' + 'title="' + img.fileName + '"' + 'style="' + 'width:100%;' + '"' + 'class="' + 'img-thumbnail' + '"/>',
             // '<label class="caption">' + img.fileName + '</label>'
-          ].join('');
+          // ].join('');
+          ];
           output.appendChild(div);
         });
 

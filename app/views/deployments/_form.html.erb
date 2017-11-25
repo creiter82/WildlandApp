@@ -71,14 +71,17 @@
       <label class="btn btn-sm btn-outline-primary">
         Upload feature image <%= f.file_field :feature_image, style: 'display:none', onchange: "previewFeatureImage();" %>
       </label><br />
+      <% if @deployment.feature_image %>
+        <%= image_tag @deployment.feature_image, class: 'img-thumbnail', height: '200' %>
+      <% end %>
       <img id="feature_prev" src="#" height="200" />
     </div> 
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <label class="btn btn-sm btn-outline-primary">
         Upload multiple images <%= f.file_field :images, style: 'display:none', multiple: true %>
       </label>
-      <div id="preview"></div>
+      <div class="row" id="preview"></div>
     </div> 
 
     <hr>

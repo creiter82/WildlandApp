@@ -26,6 +26,16 @@
       <%= image_tag @deployment.feature_image, class: 'img-thumbnail', width: '100%' %> 
     </div>  
 
-  </div>   
+  </div> 
+
+  <% if @deployment.images %>  
+    <div class="row">
+      <% @deployment.images.each do |deployment| %>
+        <div class="col-md-3">
+          <%= image_tag deployment, class: 'img-thumbnail', width: '100%' %>
+        </div>
+      <% end %>  
+    </div>  
+  <% end %>  
 
 </div>  

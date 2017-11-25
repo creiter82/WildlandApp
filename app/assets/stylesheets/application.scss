@@ -110,10 +110,27 @@ body {
   color: gray;
 }
 
-.thumbnail img {
-  height: 100px;
-  margin: 4px;
-  border: 1px solid #444;
+// .thumbnail img {
+//   height: 100px;
+//   margin: 4px;
+//   border: 1px solid #444;
+// }
+
+#preview {
+  img {
+    margin-bottom: 10px;
+  }
+  .remove {
+    display: block;
+    // background: #444;
+    // border: 1px solid black;
+    color: $danger;
+    text-align: center;
+    cursor: pointer;
+  }
+  .remove:hover {
+    color: darken($danger, 30%);
+  }
 }
 
 
