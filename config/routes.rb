@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :rosters
   
-  resources :deployments
+  resources :deployments do
+    resources :images, :only => [:create, :destroy]
+  end
 
   resources :certifications, path: 'quals', only: [:index, :new, :create, :edit, :update, :destroy]
 
