@@ -1,3 +1,12 @@
+jQuery(function() {
+  $("a[rel~=popover], .has-popover").popover();
+  $("a[rel~=tooltip], .has-tooltip").tooltip();
+});
+
+$('#imagesModal').modal({
+    show: 'true'
+});
+
 function previewFeatureImage() {
   var preview = document.querySelector('#feature_prev');
   var file    = document.querySelector('input[type=file]').files[0];
