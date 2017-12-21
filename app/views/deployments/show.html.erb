@@ -39,7 +39,10 @@
     <div class="row">
       <% @deployment.images.each_with_index do |image, index| %>
         <div class="col-md-3">
-          <%= image_tag image, class: 'img-thumbnail', width: '100%' %>
+          <%#= image_tag image, class: 'img-thumbnail', width: '100%' %>
+          <%#= link_to fa_icon("trash-o", class: 'fa-lg'), deployment_image_path(@deployment, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %>
+
+          <%= link_to image_tag(image.url, width: '100%'), image.url, "data-lightbox" => @deployment.images %>
           <%= link_to fa_icon("trash-o", class: 'fa-lg'), deployment_image_path(@deployment, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %>
         </div>
       <% end %>  

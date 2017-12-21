@@ -41,4 +41,5 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'mini_magick', '~> 4.8'
+gem 'lightbox2-rails'
 
