@@ -10,17 +10,7 @@
         <%= button_tag(fa_icon("times", class: 'fa-lg'), 'data-dismiss': 'modal', 'aria-label': 'Close', class: 'close') %>
       </div>
       <div class="modal-body">
-        <%= form_for @deployment, url: deployment_images_path(@deployment), method: :post do |f| %>
-
-          <div class="form-group col-md-12">
-            <label class="btn btn-sm btn-outline-success">
-              Select Images <%= f.file_field :images, style: 'display:none', multiple: true %>
-            </label>
-            <div class="row" id="preview"></div>
-          </div>
-
-          <%= f.submit "Add Images", class: 'btn btn-primary' %>
-        <% end %>
+        <%= render "image_form" %>
       </div>
     </div>
   </div>
