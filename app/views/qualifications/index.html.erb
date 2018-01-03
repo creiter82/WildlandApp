@@ -16,10 +16,11 @@
             <td><%= qual.name.titleize %></td>
             <td><%= qual.acronym.upcase %></td> 
             <td>
-              <%= link_to 'Edit', edit_qualification_path(qual) %>
-              <%= link_to 'Delete', qualification_path(qual),
+              <%#= link_to 'Edit', edit_qualification_path(qual) %>
+              <%#= link_to 'Delete', qualification_path(qual),
                                                 method: :delete,
                                                 data: { confirm: "Are you sure you want to delete \'#{qual.name.titleize}'?"} %>
+              <%= qual_links qual %>                                  
             </td>
           </tr>
         <% end %>
