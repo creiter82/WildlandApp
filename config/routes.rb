@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :images, :only => [:create, :destroy]
   end
 
-  resources :certifications, path: 'quals', only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :qualifications, path: 'quals', only: [:index, :new, :create, :edit, :update, :destroy]
 
   root to: 'pages#home'
 

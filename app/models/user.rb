@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_many :user_certifications
-  has_many :certifications, through: :user_certifications 
+  has_many :user_qualifications
+  has_many :qualifications, through: :user_qualifications 
 
   has_many :availabilities
   has_many :rosters, through: :availabilities 
@@ -41,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def is_engine_boss?
-    certifications.where(name: 'engine boss').exists?
+    qualifications.where(name: 'engine boss').exists?
   end
 
   def downcase_name

@@ -56,11 +56,11 @@
 
           <div class="form-row">
 
-          <%= fields_for(@user, @user.user_certifications.build) do |f| %>
+          <%= fields_for(@user, @user.user_qualifications.build) do |f| %>
             <div class="form-group col-md-8">
-              <%= f.label :certifications, 'Quals', class: "col-control-label" %>
+              <%= f.label :qualifications, 'Quals', class: "col-control-label" %>
               <div>
-                <%= f.collection_check_boxes :certification_ids, Certification.all, 
+                <%= f.collection_check_boxes :qualification_ids, Qualification.all, 
                                               :id, :name do |b| %>
                   <div class="check-box">                            
                     <%= b.check_box %>

@@ -6,7 +6,7 @@
     <p>Email: <%= @user.email %></p>
     <p>Shift: <em class="<%= @user.shift %>"><%= @user.shift %></em></p>
     <p> Quals:
-      <%= render 'shared/user_certs', user: @user %>
+      <%= render 'shared/user_quals', user: @user %>
     </p>
     <p>
       Deployments: <%= @user.deployments_count %>

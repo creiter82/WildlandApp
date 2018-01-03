@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012211606) do
+ActiveRecord::Schema.define(version: 20180103163725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 20171012211606) do
 
   create_table "availability_positions", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "certifications", force: :cascade do |t|
-    t.string   "name"
-    t.string   "acronym"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,6 +53,13 @@ ActiveRecord::Schema.define(version: 20171012211606) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "qualifications", force: :cascade do |t|
+    t.string   "name"
+    t.string   "acronym"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rosters", force: :cascade do |t|
     t.string   "name"
     t.datetime "start_date"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20171012211606) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "user_certifications", force: :cascade do |t|
-    t.integer  "certification_id"
+  create_table "user_qualifications", force: :cascade do |t|
+    t.integer  "qualification_id"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

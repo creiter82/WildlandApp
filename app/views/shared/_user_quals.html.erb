@@ -1,0 +1,9 @@
+<% if user.qualifications.count > 0 %>
+  <ul class="quals">
+    <% user.qualifications.order(:acronym).each do |qual| %>
+      <li>
+        <%= qual.acronym.upcase %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
