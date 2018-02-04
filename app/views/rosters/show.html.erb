@@ -10,9 +10,9 @@
 
   <div class="row roster-card">
     
-    <%= render 'position_availability', title: 'Engine Bosses', position_type: current_user.is_engine_boss?, position: @engine_boss, users: @eng_avail %>  
+    <%= render 'position_availability', title: 'Engine Bosses', position_type: current_user.is_engine_boss?, position: @engine_boss, users: @engine_bosses %>  
 
-    <%= render 'position_availability', title: 'Firefighters', position_type: !current_user.is_engine_boss?, position: @firefighter, users: @ff_avail %>
+    <%= render 'position_availability', title: 'Firefighters', position_type: !current_user.is_engine_boss?, position: @firefighter, users: @ffs %>
 
   </div>
 
