@@ -12,8 +12,12 @@ class RostersController < ApplicationController
   def show
     @engine_boss = AvailabilityPosition.find_by_name('engine boss')
     @firefighter = AvailabilityPosition.find_by_name('firefighter')
-    @engine_bosses = User.joins(:availabilities).where(availabilities: { availability_position_id: @engine_boss.id, roster_id: @roster.id }).order(:deployments_count, Availability.arel_table[:created_at])
+    @engine_bosses = User.joins(:availabilities).where(availabilities: { availability_position_id: @engine_boss.id, roster_id: @roster.id }).order(Availability.arel_table[:created_at])
     @ffs = User.joins(:availabilities).where(availabilities: { availability_position_id: @firefighter.id, roster_id: @roster.id }).order(:deployments_count, Availability.arel_table[:created_at])
+    # @ffs = User.joins(:availabilities).where(availabilities: { availability_position_id: @firefighter.id, roster_id: @roster.id }).order(:deployments_count, Availability.arel_table[:created_at])
+
+    @eng_avail = @engine_bosses.sort_by{ |t| t.deployments.from_this_year.count }
+    @ff_avail = @ffs.sort_by{ |t| t.deployments.from_this_year.count }
 
     @deployment = Deployment.new
   end

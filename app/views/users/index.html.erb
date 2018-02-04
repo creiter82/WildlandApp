@@ -25,7 +25,7 @@
               <%= render 'shared/user_quals', user: user %>
             </td>
             <td>
-              <%= user.deployments_count %>
+              <%= user.deployments.from_this_year.count %>
             </td>  
             <td>
               <%= link_to 'View', user_path(user) %>

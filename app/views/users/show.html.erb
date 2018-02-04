@@ -9,9 +9,9 @@
       <%= render 'shared/user_quals', user: @user %>
     </p>
     <p>
-      Deployments: <%= @user.deployments_count %>
+      Deployments: <%= @user.deployments.from_this_year.count %>
       <% if @user.deployments_count > 0 %>
-        <% @user.deployments.each do |deployment| %>    
+        <% @user.deployments.from_this_year.each do |deployment| %>    
           <ul>
             <li>
               <%= deployment.name.titleize %>
