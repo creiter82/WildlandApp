@@ -6,10 +6,10 @@
       <div class="col-md-4">
         <div class="card w-100">
           <% if deployment.feature_image %>
-            <%= image_tag deployment.feature_image, class: 'card-img-top', width: '100%' %>
+            <%= link_to image_tag(deployment.feature_image, class: 'card-img-top', width: '100%'), deployment %>
           <% end %>  
           <div class="card-body">
-            <h4 class="card-title mb-1"><%= deployment.name.titleize %> <small class="text-muted"><%= deployment.location.titleize %></small></h4>
+            <h4 class="card-title mb-1"><%= link_to deployment.name.titleize, deployment %> <small class="text-muted"><%= deployment.location.titleize %></small></h4>
             <p class="card-subtitle text-muted"><%= deployment.created_at.strftime('%m/%d/%Y') %></p>
             <p class="card-text">
               <strong>Personnel:</strong>
@@ -19,9 +19,8 @@
                 <% end %>
               <% end %>
             </p>
-            <%= link_to 'View', deployment, class: 'btn btn-sm btn-outline-success' %>
-            <%= link_to 'Edit', edit_deployment_path(deployment), class: 'btn btn-sm btn-outline-warning' %>
-            <%= link_to 'Delete', deployment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+            <%= link_to 'Edit', edit_deployment_path(deployment), class: 'btn btn-sm btn-outline-warning' if logged_in?(:admin) %>
+            <%= link_to 'Delete', deployment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' if logged_in?(:admin) %>
           </div>
         </div>
       </div>  

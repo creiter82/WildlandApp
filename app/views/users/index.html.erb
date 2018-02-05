@@ -8,8 +8,8 @@
           <th>Name</th>
           <th>Phone</th>
           <th>Email</th>
-          <th>Shift</th>
-          <th>Quals</th>
+          <th class="text-center">Shift</th>
+          <th class="text-center">Quals</th>
           <th>Deployments</th>
           <th></th>
         </tr>
@@ -17,24 +17,23 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.name.titleize %></td>
+            <td><%= link_to user.name.titleize, user_path(user) %></td>
             <td><%= number_to_phone(user.phone, area_code: true) %></td>
             <td><%= user.email %></td>
-            <td class="<%= user.shift %>"><%= user.shift %></td>
+            <td class="<%= user.shift %> text-center"><%= user.shift %></td>
             <td>
               <%= render 'shared/user_quals', user: user %>
             </td>
-            <td>
+            <td class="text-center">
               <%= user.deployments.from_this_year.count %>
             </td>  
             <td>
-              <%= link_to 'View', user_path(user) %>
-              <% if current_user == user %>
+              <% if current_user == user || logged_in?(:admin) %>
                 <%= link_to 'Edit', edit_user_path(user) %>
               <% end %>
               <%= link_to 'Delete', user_path(user),
                                                 method: :delete,
-                                                data: { confirm: "Are you sure you want to delete \'#{user.name.titleize}'?"} %>
+                                                data: { confirm: "Are you sure you want to delete \'#{user.name.titleize}'?"} if logged_in?(:admin) %>
             </td>
           </tr>
         <% end %>

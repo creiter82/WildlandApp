@@ -1,6 +1,8 @@
 class QualificationsController < ApplicationController
   before_action :set_qual, only: [:edit, :update, :destroy]
 
+  access admin: :all
+
   def index
     @quals = Qualification.all
   end

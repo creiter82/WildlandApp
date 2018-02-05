@@ -53,6 +53,10 @@ class User < ApplicationRecord
     qualifications.where(name: 'engine boss').exists?
   end
 
+  def is_on_deployment? deployment
+    team_deployments.where(deployment_id: deployment.id).exists?
+  end
+
   def downcase_name
     self.name.downcase!
   end

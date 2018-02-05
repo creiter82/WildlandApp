@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_active_user, only: [:edit]
+
+  access user: {except: [:new, :destroy]}, admin: :all
 
   def index
     # @users = User.order(:name)
@@ -41,6 +44,10 @@ class UsersController < ApplicationController
     end
 
     def user_params
-       params.require(:user).permit(:name, :email, :phone, :shift, :deployments_count, qualification_ids:[]) 
+       params.require(:user).permit(:name, :email, :phone, :shift, :deployments_count, :role, qualification_ids:[]) 
+    end
+
+    def check_active_user
+      forbidden! unless current_user == @user || logged_in?(:admin)
     end
 end

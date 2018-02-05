@@ -1,6 +1,8 @@
 class RostersController < ApplicationController
   before_action :set_roster, only: [:show, :edit, :update, :destroy]
 
+  access user: {except: [:new, :edit, :destroy]}, admin: :all
+
   # GET /rosters
   # GET /rosters.json
   def index

@@ -1,7 +1,5 @@
 <div class="container">
 
-  <p id="notice"><%= notice %></p>
-
   <%= link_to 'Edit', edit_deployment_path(@deployment) %> |
   <%= link_to 'Back', deployments_path %>
 
@@ -22,7 +20,7 @@
 
 
       <div>
-        <%= render 'add_images_modal' %> 
+        <%= render 'add_images_modal' if logged_in?(:admin) || current_user.is_on_deployment?(@deployment) %> 
       </div>
 
     </div>
@@ -43,7 +41,7 @@
           <%#= link_to fa_icon("trash-o", class: 'fa-lg'), deployment_image_path(@deployment, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %>
 
           <%= link_to image_tag(image.url, width: '100%'), image.url, "data-lightbox" => @deployment.images %>
-          <%= link_to fa_icon("trash-o", class: 'fa-lg'), deployment_image_path(@deployment, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %>
+          <%= link_to fa_icon("trash-o", class: 'fa-lg'), deployment_image_path(@deployment, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } if logged_in?(:admin) %>
         </div>
       <% end %>  
     </div>  

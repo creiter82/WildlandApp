@@ -1,5 +1,8 @@
 class DeploymentsController < ApplicationController
   before_action :set_deployment, only: [:show, :edit, :update, :destroy]
+  before_action :check_active_user, only: [:edit]
+
+  access user: {except: [:new, :destroy]}, admin: :all
 
   # GET /deployments
   # GET /deployments.json
@@ -76,4 +79,9 @@ class DeploymentsController < ApplicationController
     def deployment_params
       params.require(:deployment).permit(:name, :location, :slug, :feature_image, {images: []}, :roster_id, user_ids:[])
     end
+
+    def check_active_user
+      forbidden! unless current_user.is_on_deployment?(@deployment) || logged_in?(:admin)
+    end
+
 end

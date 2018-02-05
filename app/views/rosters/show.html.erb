@@ -16,6 +16,6 @@
 
   </div>
 
-  <%= render 'deploy_modal' %>
+  <%= render 'deploy_modal' if logged_in?(:admin) %>
 
 </div>  
