@@ -12,10 +12,10 @@
 //
 //= require jquery3
 //= require jquery_ujs
+//= require lightbox
 //= require turbolinks
 //= require popper
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
-//= require lightbox
 //= require_tree .
