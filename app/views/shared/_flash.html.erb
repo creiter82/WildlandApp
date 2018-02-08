@@ -1,15 +1,20 @@
-<% flash.each do |key, value| %>
-
-  <% if key == "notice" %>
-    <div class="alert alert-success">
-  <% elsif key == "alert" %>
-    <div class="alert alert-danger">
-  <% elsif key == "timedout" %>
-    <div class="invisible">
-  <% else %>
-    <div class="<%= flash_class(key) %> alert-dismissible fade show" role="alert">
-  <% end %>    
-    <%= value %>
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    </div>
-<% end %>
+<div class="row">
+  <div class="col-4 mx-auto text-center">
+    <% flash.each do |key, value| %>
+    
+        <% if key == "notice" %>
+          <div class="alert alert-success">
+        <% elsif key == "alert" %>
+          <div class="alert alert-danger">
+        <% elsif key == "timedout" %>
+          <div class="invisible">
+        <% else %>
+          <div class="<%= flash_class(key) %> alert-dismissible fade show" role="alert">
+        <% end %>    
+          <%= value %>
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          </div> 
+          
+    <% end %>
+  </div>  
+</div>  
