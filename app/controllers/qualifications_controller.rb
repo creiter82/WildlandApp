@@ -13,12 +13,11 @@ class QualificationsController < ApplicationController
 
   def create
     @qual = Qualification.new(qual_params)
-    respond_to do |format|
-      if @qual.save
-        format.html { redirect_to qualifications_path, notice: "#{@qual.name.titleize} was successfully created." }
-      else
-        format.html { render :new }
-      end
+    if @qual.save
+      flash[:success] = "#{@qual.name.titleize} was successfully created." 
+      redirect_to qualifications_path
+    else
+      render :new 
     end
   end
 
@@ -26,16 +25,20 @@ class QualificationsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @qual.update(qual_params)
-        format.html { redirect_to qualifications_path, notice: "#{@qual.name.titleize} was successfully updated." }
-      else
-        format.html { render :edit }
-      end
+    if @qual.update(qual_params)
+      flash[:success] = "#{@qual.name.titleize} was successfully updated." 
+      redirect_to qualifications_path
+    else
+      render :edit
     end
   end
 
   def destroy
+    @qual.destroy
+
+    flash[:danger] = "#{@qual.name.titleize} was successfully destroyed."
+
+    redirect_to qualifications_path
   end
 
   private

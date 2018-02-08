@@ -37,28 +37,22 @@ class RostersController < ApplicationController
     @roster.name = "week of #{@roster.start_date.strftime("%m/%d/%Y")}"
     @roster.end_date = @roster.start_date.end_of_week
 
-    respond_to do |format|
-      if @roster.save
-        format.html { redirect_to @roster, notice: "Roster for #{@roster.name} was successfully created." }
-        format.json { render :show, status: :created, location: @roster }
-      else
-        format.html { render :new }
-        format.json { render json: @roster.errors, status: :unprocessable_entity }
-      end
+    if @roster.save
+      flash[:success] = "Roster for #{@roster.name} was successfully created."
+      redirect_to @roster
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /rosters/1
   # PATCH/PUT /rosters/1.json
   def update
-    respond_to do |format|
-      if @roster.update(roster_params)
-        format.html { redirect_to @roster, notice: 'Roster was successfully updated.' }
-        format.json { render :show, status: :ok, location: @roster }
-      else
-        format.html { render :edit }
-        format.json { render json: @roster.errors, status: :unprocessable_entity }
-      end
+    if @roster.update(roster_params)
+      flash[:success] = 'Roster was successfully updated.'
+      redirect_to @roster
+    else
+      render :edit
     end
   end
 
@@ -66,10 +60,8 @@ class RostersController < ApplicationController
   # DELETE /rosters/1.json
   def destroy
     @roster.destroy
-    respond_to do |format|
-      format.html { redirect_to rosters_url, notice: 'Roster was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:danger] = 'Roster was successfully destroyed.'
+    redirect_to rosters_url
   end
 
   private

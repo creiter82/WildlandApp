@@ -34,28 +34,22 @@ class DeploymentsController < ApplicationController
   def create
     @deployment = Deployment.new(deployment_params)
 
-    respond_to do |format|
-      if @deployment.save
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
-        format.json { render :show, status: :created, location: @deployment }
-      else
-        format.html { render :new }
-        format.json { render json: @deployment.errors, status: :unprocessable_entity }
-      end
+    if @deployment.save
+      flash[:success] = "#{@deployment.name.titleize} was successfully created."
+      redirect_to @deployment
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /deployments/1
   # PATCH/PUT /deployments/1.json
   def update
-    respond_to do |format|
-      if @deployment.update(deployment_params)
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @deployment }
-      else
-        format.html { render :edit }
-        format.json { render json: @deployment.errors, status: :unprocessable_entity }
-      end
+    if @deployment.update(deployment_params)
+      flash[:success] = "#{@deployment.name.titleize} was updated"
+      redirect_to @deployment
+    else
+      render :edit
     end
   end
 
@@ -63,10 +57,10 @@ class DeploymentsController < ApplicationController
   # DELETE /deployments/1.json
   def destroy
     @deployment.destroy
-    respond_to do |format|
-      format.html { redirect_to deployments_url, notice: 'Deployment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    flash[:danger] = "#{@deployment.name.titleize} was successfully destroyed."
+
+    redirect_to deployments_url
   end
 
   private

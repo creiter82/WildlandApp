@@ -6,7 +6,7 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.new(availability_params)
 
     if @availability.save
-      flash[:notice] = "You are signed up"
+      flash[:success] = "You are signed up"
       redirect_to :back
     else
       flash[:danger] = "You were not signed up"
@@ -18,7 +18,8 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.find(params[:id])
 
     @availability.destroy
-    redirect_to :back, notice: "Availability deleted"
+    flash[:danger] = "You've been removed from the Roster"
+    redirect_to :back
   end
 
   private
