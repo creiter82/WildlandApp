@@ -58,7 +58,7 @@ class DeploymentsController < ApplicationController
   def destroy
     @deployment.destroy
 
-    flash[:danger] = "#{@deployment.name.titleize} was successfully destroyed."
+    flash[:danger] = "#{@deployment.name.titleize} was successfully deleted."
 
     redirect_to deployments_url
   end
