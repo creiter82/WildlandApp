@@ -15,7 +15,7 @@
         <% end %>
 
         <% users.each do |available| %>
-          <p><%= available.name.titleize %> <%= number_to_phone(available.phone, area_code: true) %>
+          <p class="<%= 'engineer' if available.qualifications.where(acronym: 'enop').exists? %>"><%= available.name.titleize %> <%= number_to_phone(available.phone, area_code: true) %>
             <% if current_user == available %>
               <%= link_to 'Remove', availability_path(available.availabilities.find_by(roster_id: @roster.id)), method: :delete, data: { confirm: "Remove #{available.first_name} from roster?" }, class: 'btn btn-sm btn-outline-danger' %>
             <% end %>
