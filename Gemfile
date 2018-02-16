@@ -43,4 +43,5 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'mini_magick', '~> 4.8'
 gem 'lightbox2-rails'
 gem 'petergate', '~> 1.8', '>= 1.8.1'
+gem 'simple_calendar', '~> 2.0'
 

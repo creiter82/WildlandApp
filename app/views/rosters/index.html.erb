@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>Rosters</h1>
+
+  <%= render 'calendar' %>
+
+  <h1>Current Rosters</h1>
 
   <table class="table table-hover">
     <thead class="thead-default">
@@ -7,23 +10,25 @@
         <th>Name</th>
         <th>Start Date</th>
         <th>End Date</th>
-        <th>Personnel Count</th>
+        <th>Personnel Avail</th>
         <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @rosters.each do |roster| %>
-        <tr>
-          <td><%= link_to roster.name.capitalize, roster %></td>
-          <td><%= roster.start_date.strftime("%m/%d/%Y") %></td>
-          <td><%= roster.end_date.strftime("%m/%d/%Y") %></td>
-          <td><%= roster.availabilities.count %></td>
-          <td>
-            <%#= link_to 'View', roster %>
-            <%= roster_index_links roster %>
-          </td>
-        </tr>
+        <% if roster.start_date >= Date.today.beginning_of_week %>
+          <tr>
+            <td><%= link_to roster.name.capitalize, roster %></td>
+            <td><%= roster.start_date.strftime("%m/%d/%Y") %></td>
+            <td><%= roster.end_date.strftime("%m/%d/%Y") %></td>
+            <td><%= roster.availabilities.count %></td>
+            <td>
+              <%#= link_to 'View', roster %>
+              <%= roster_index_links roster %>
+            </td>
+          </tr>
+        <% end %>  
       <% end %>
     </tbody>
   </table>

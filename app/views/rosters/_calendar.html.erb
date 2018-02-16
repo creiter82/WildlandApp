@@ -1,0 +1,9 @@
+<%= month_calendar events: @rosters do |date, rosters| %>
+  <%= date.day %>
+
+  <% rosters.each do |roster| %>
+    <div>
+      <strong><%= link_to roster.name.titleize, roster_path(roster) %></strong>
+    </div>
+  <% end %>
+<% end %>
