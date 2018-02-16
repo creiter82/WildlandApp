@@ -4,8 +4,8 @@
     <small>Roster Dates: <%= @roster.start_date.strftime("%m/%d/%Y") %> - <%= @roster.end_date.strftime("%m/%d/%Y") %></small>
   </h1>
 
-  <%= link_to fa_icon("arrow-left", class: 'fa-lg'), rosters_path %>
-  <%= link_to fa_icon("pencil-square-o", class: 'fa-lg'), edit_roster_path(@roster), class: 'edit-btn' %>
+  <%= link_to fa_icon("arrow-circle-left", class: 'fa-lg'), rosters_path %>
+  <%= link_to fa_icon("edit", class: 'fa-lg'), edit_roster_path(@roster), class: 'edit-btn' %>
   
 
   <div class="row roster-card">

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="jumbotron">
-    <h1 class="display-3">Welcome <%= current_user.first_name if current_user %></h1>
+    <h1 class="display-3">Welcome <%= current_user.first_name.capitalize if current_user %></h1>
     <p class="lead">Find me in app/views/pages/home.html.erb</p></p>
     <hr class="my-4">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
