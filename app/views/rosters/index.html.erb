@@ -25,7 +25,7 @@
             <td><%= roster.availabilities.count %></td>
             <td>
               <%#= link_to 'View', roster %>
-              <%= roster_index_links roster %>
+              <%= roster_index_links roster if logged_in?(:admin) %>
             </td>
           </tr>
         <% end %>  
@@ -35,5 +35,5 @@
 
   <br>
 
-  <%= link_to 'New Roster', new_roster_path, class: 'btn btn-outline-primary' %>
+  <%= link_to 'New Roster', new_roster_path, class: 'btn btn-outline-primary' if logged_in?(:admin) %>
 </div>  
