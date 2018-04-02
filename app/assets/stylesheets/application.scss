@@ -31,7 +31,7 @@ $blue: #007bff;
 
 body {
   // min-height: 75rem;
-  padding-top: 8rem;
+  padding-top: 10rem;
 }
 
 .nav-padding-left {
@@ -77,6 +77,8 @@ body {
     color: darken($danger, 10%);
   }
 }
+
+// Pages //
 
 // Users //
 
@@ -243,6 +245,10 @@ body {
       }
     }
   }
+}
+
+footer {
+  margin-top: 40px;
 }
 
 
