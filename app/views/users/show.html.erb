@@ -1,5 +1,5 @@
 <div class="container">  
-  <h1><%= @user.name.titleize %></h1>
+  <h1><%= @user.name.titleize %> <%= link_to fa_icon("pencil-square-o", class: 'fa-sm'), edit_user_path(@user), class: 'edit-btn' if current_user == @user || logged_in?(:admin) %></h1>
 
   <div>
     <p>Phone: <%= number_to_phone(@user.phone, area_code: true) %></p>
