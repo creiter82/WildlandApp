@@ -44,10 +44,10 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      if admin?
+      if logged_in?(:admin)
         params.require(:user).permit(:name, :email, :phone, :shift, :deployments_count, :role, qualification_ids:[]) 
       else
-        params.require(:user).permit(:name, :email, :phone, :shift)
+        params.require(:user).permit(:name, :email, :phone, :shift, :password, :password_confirmation)
       end
     end
 
