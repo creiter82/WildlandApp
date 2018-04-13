@@ -41,9 +41,9 @@ class User < ApplicationRecord
     self.name.split.last
   end
 
-  def name
-    super.titleize
-  end
+  # def name
+  #   super.titleize
+  # end
 
   def can_signup? roster
     !already_signed_up?(roster)
