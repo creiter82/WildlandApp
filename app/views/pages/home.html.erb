@@ -8,4 +8,17 @@
       <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     </p>
   </div>
+
+  <% if logged_in?(:admin) %>  
+      <h3>Users Awaiting Approval</h3>
+      <table class="table table-hover d-flex justify-content-start">
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %>
+            <td><%= link_to "Edit", edit_user_path(user) %>
+          </tr>
+        <% end %>
+      </table>
+  <% end %>  
+
 </div>  

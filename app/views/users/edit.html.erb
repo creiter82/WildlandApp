@@ -76,6 +76,11 @@
           <div class="form-group">
             <%= f.label :role %>
             <%= f.select :role, @user.available_roles %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Approved" %> 
+            <%= f.check_box :approved %>
           </div> 
 
         <% end %>  
