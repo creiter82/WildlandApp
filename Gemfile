@@ -45,3 +45,5 @@ gem 'lightbox2-rails'
 gem 'petergate', '~> 1.8', '>= 1.8.1'
 gem 'simple_calendar', '~> 2.0'
 
+ruby "2.4.0"
+
