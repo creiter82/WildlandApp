@@ -4,7 +4,7 @@ jQuery(function() {
 });
 
 $('#imagesModal').modal({
-    show: 'true'
+    show: false
 });
 
 function previewFeatureImage() {
@@ -73,9 +73,7 @@ window.onload = function() {
             var div = document.createElement('div');
             div.className = 'col-md-2';
             div.innerHTML = [
-              '<img src="' + img.result + '"' + 'title="' + img.fileName + '"' + 'style="' + 'width:100%;' + '"' + 'class="' + 'img-thumbnail' + '"/>',
-              // '<label class="caption">' + img.fileName + '</label>'
-            // ].join('');
+              '<img src="' + img.result + '"' + 'style="' + 'width:100%;' + '"' + 'class="' + 'img-thumbnail' + '"/>'
             ].join('');
             output.appendChild(div);
           });
