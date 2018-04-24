@@ -76,7 +76,7 @@ window.onload = function() {
               '<img src="' + img.result + '"' + 'title="' + img.fileName + '"' + 'style="' + 'width:100%;' + '"' + 'class="' + 'img-thumbnail' + '"/>',
               // '<label class="caption">' + img.fileName + '</label>'
             // ].join('');
-            ];
+            ].join('');
             output.appendChild(div);
           });
 
