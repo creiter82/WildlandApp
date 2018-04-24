@@ -4,7 +4,7 @@ jQuery(function() {
 });
 
 $('#rosterModal').modal({
-    show: 'true'
+    show: true
 });
 
 

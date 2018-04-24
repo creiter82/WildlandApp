@@ -56,7 +56,7 @@ window.onload = function() {
   if (window.File && window.FileList && window.FileReader) {
     var filesInput = document.getElementById('deployment_images');
     if(filesInput){ 
-      filesInput.addEventListener("turbolinks:load", function(e) {
+      filesInput.addEventListener('change', function(e) {
         var output = document.getElementById('preview');
         var files = e.target.files; //FileList object
         
