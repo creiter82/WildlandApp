@@ -74,7 +74,7 @@ window.onload = function() {
             div.className = 'col-md-2';
             div.innerHTML = [
               '<img src="' + img.result + '"' + 'style="' + 'width:100%;' + '"' + 'class="' + 'img-thumbnail' + '"/>'
-            ].join('');
+            ];
             output.appendChild(div);
           });
 
