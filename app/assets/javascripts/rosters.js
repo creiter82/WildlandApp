@@ -9,19 +9,28 @@ $('#rosterModal').modal({
 
 
 
-document.addEventListener("turbolinks:load", function() {
-  $(function () {
-    $('#start_date').datetimepicker({
-      useCurrent: false,
-      viewMode: 'days',
-      format: 'YYYY/MM/DD',
-      daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
-      icons: {
-        previous: "fa fa-caret-left",
-        next: 'fa fa-caret-right',
-        close: 'fa fa-close'
-      },
-      debug:true //Keeps picker open
+// document.addEventListener("turbolinks:load", function() {
+//   $(function () {
+//     $('#start_date').datetimepicker({
+//       useCurrent: false,
+//       viewMode: 'days',
+//       format: 'YYYY/MM/DD',
+//       daysOfWeekDisabled: [0, 2, 3, 4, 5, 6],
+//       icons: {
+//         previous: "fa fa-caret-left",
+//         next: 'fa fa-caret-right',
+//         close: 'fa fa-close'
+//       },
+//       debug:true //Keeps picker open
+//     });
+//   });
+// })
+
+$(document).ready("turbolinks:load", function () {
+    $('#start_date').datepicker({
+        format: "yyyy/mm/dd",
+        weekStart: 1,
+        autoclose: true,
+        daysOfWeekDisabled: [0, 2, 3, 4, 5, 6]
     });
-  });
-})
+});
