@@ -86,7 +86,7 @@ window.onload = function() {
   } else {
     console.log('Your browser does not support File API!');
   }
-}
+};
 
 // function previewImages() {
 
