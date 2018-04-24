@@ -1,5 +1,5 @@
 class AdminMailer < ApplicationMailer
-  default from: 'AFRWildlandTeam@afrwildlandteam.herokuapp.com'
+  default from: 'admin@afrwildlandteam.herokuapp.com'
   layout 'mailer'
 
   def new_user_waiting_for_approval(email)
