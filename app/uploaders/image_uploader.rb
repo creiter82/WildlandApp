@@ -1,5 +1,9 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
+  # Include RMagick or MiniMagick support:
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+
   process :auto_orient # this should go before all other "process" steps
 
   def auto_orient
@@ -7,10 +11,6 @@ class ImageUploader < CarrierWave::Uploader::Base
       image.tap(&:auto_orient)
     end
   end
-
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :aws
