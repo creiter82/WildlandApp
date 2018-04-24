@@ -51,42 +51,42 @@ function previewFeatureImage() {
 
 // };
 
-window.onload = function() {
-  // Check for File API support.
-  if (window.File && window.FileList && window.FileReader) {
-    var filesInput = document.getElementById('deployment_images');
-    filesInput.addEventListener('change', function(e) {
-      var output = document.getElementById('preview');
-      var files = e.target.files; //FileList object
+// window.onload = function() {
+//   // Check for File API support.
+//   if (window.File && window.FileList && window.FileReader) {
+//     var filesInput = document.getElementById('deployment_images');
+//     filesInput.addEventListener('change', function(e) {
+//       var output = document.getElementById('preview');
+//       var files = e.target.files; //FileList object
       
-      output.innerHTML = ''; // Clear (previous) results.
+//       output.innerHTML = ''; // Clear (previous) results.
       
-      for (var i = 0; i < files.length; i++) {
-        var currFile = files[i];
-        if (!currFile.type.match('image')) continue; // Skip non-images.
+//       for (var i = 0; i < files.length; i++) {
+//         var currFile = files[i];
+//         if (!currFile.type.match('image')) continue; // Skip non-images.
         
-        var imgReader = new FileReader();
-        imgReader.fileName = currFile.name;
-        imgReader.addEventListener('load', function(e1) {
-          var img = e1.target;
-          var div = document.createElement('div');
-          div.className = 'col-md-2';
-          div.innerHTML = [
-            '<img src="' + img.result + '"' + 'title="' + img.fileName + '"' + 'style="' + 'width:100%;' + '"' + 'class="' + 'img-thumbnail' + '"/>',
-            // '<label class="caption">' + img.fileName + '</label>'
-          // ].join('');
-          ];
-          output.appendChild(div);
-        });
+//         var imgReader = new FileReader();
+//         imgReader.fileName = currFile.name;
+//         imgReader.addEventListener('load', function(e1) {
+//           var img = e1.target;
+//           var div = document.createElement('div');
+//           div.className = 'col-md-2';
+//           div.innerHTML = [
+//             '<img src="' + img.result + '"' + 'title="' + img.fileName + '"' + 'style="' + 'width:100%;' + '"' + 'class="' + 'img-thumbnail' + '"/>',
+//             // '<label class="caption">' + img.fileName + '</label>'
+//           // ].join('');
+//           ];
+//           output.appendChild(div);
+//         });
 
-        // Read image.
-        imgReader.readAsDataURL(currFile);
-      }
-    });
-  } else {
-    console.log('Your browser does not support File API!');
-  }
-}
+//         // Read image.
+//         imgReader.readAsDataURL(currFile);
+//       }
+//     });
+//   } else {
+//     console.log('Your browser does not support File API!');
+//   }
+// }
 
 // function previewImages() {
 
