@@ -80,6 +80,18 @@ body {
 
 // Pages //
 
+.jumbotron {
+  min-height: 400px;
+  background: url(home.jpg);
+  background-size: cover;
+  background-position: bottom;
+  h1 {
+    color: #f9f9f9;
+    text-shadow: 2px 2px black;
+    text-align: center;
+  }
+}
+
 // Users //
 
 .registration-card {
