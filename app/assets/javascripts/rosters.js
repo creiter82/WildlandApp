@@ -11,7 +11,7 @@ $('#rosterModal').modal({
 
 document.addEventListener("turbolinks:load", function() {
   $(function () {
-    $('#start_date').datepicker({
+    $('#start_date').datetimepicker({
       useCurrent: false,
       viewMode: 'days',
       format: 'YYYY/MM/DD',
@@ -21,7 +21,7 @@ document.addEventListener("turbolinks:load", function() {
         next: 'fa fa-caret-right',
         close: 'fa fa-close'
       },
-      debug:true //Keeps picker open
+      // debug:true Keeps picker open
     });
   });
 })
