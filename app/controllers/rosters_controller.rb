@@ -39,6 +39,7 @@ class RostersController < ApplicationController
 
     if @roster.save
       flash[:success] = "Roster for #{@roster.name} was successfully created."
+      RosterMailer.new_roster_avail(@roster).deliver
       redirect_to @roster
     else
       render :new
