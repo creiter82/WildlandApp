@@ -35,6 +35,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
+    flash[:success] = "#{@user.name.titleize} was deleted"
+    redirect_to users_path
   end
 
   private
