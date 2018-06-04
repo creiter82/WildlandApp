@@ -1,0 +1,7 @@
+<h1>Aurora Fire Rescue Wildland Deployment</h1>
+
+<h3><%= @deployment.assignment.titleize %> deployed to the <%= @deployment.name %> in <%= @deployment.location.titleize %> with the following personnel:</h3>
+
+<% @deployment.team_deployments.each do |p| %>
+  <p><%= p.user.name.titleize %></p>
+<% end %>

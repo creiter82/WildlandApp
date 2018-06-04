@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423230142) do
+ActiveRecord::Schema.define(version: 20180604025910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180423230142) do
     t.string   "feature_image"
     t.json     "images"
     t.integer  "roster_id"
+    t.string   "assignment"
     t.index ["slug"], name: "index_deployments_on_slug", unique: true, using: :btree
   end
 

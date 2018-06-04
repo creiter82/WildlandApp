@@ -12,6 +12,8 @@
 
       <h5 class="mb-3 muted"><%= @deployment.created_at.strftime('%m/%d/%Y') %></h5>
 
+      <h5 class="mb-3">Assignment: <%= @deployment.assignment.titleize %></h5>
+
       <div>  
         <h4>Personnel Deployed:</h4>
         <% @deployment.team_deployments.each do |p| %>
