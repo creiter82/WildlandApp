@@ -9,5 +9,5 @@ class Deployment < ApplicationRecord
   mount_uploader :feature_image, ImageUploader
   mount_uploaders :images, ImageUploader
 
-  scope :from_this_year, lambda { where("deployments.created_at > ? AND deployments.created_at < ?", Time.now.beginning_of_year, Time.now.end_of_year) }
+  scope :from_this_year, lambda { where("deployments.created_at > ? AND deployments.created_at < ?", Time.current.beginning_of_year, Time.current.end_of_year) }
 end
