@@ -16,9 +16,10 @@
 
       <div>  
         <h4>Personnel Deployed:</h4>
-        <% @deployment.team_deployments.each do |p| %>
-          <p><%= p.user.name.titleize %></p>
-        <% end %>
+        <!-- <% @deployment.team_deployments.each do |p| %> -->
+          <!-- <p><%= p.user.name.titleize %></p> -->
+        <!-- <% end %> -->
+        <p><%= safe_join(@deployment.users.map { |d| d.name.titleize }, ', ') %></p>
       </div> 
 
 

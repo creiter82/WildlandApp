@@ -13,11 +13,12 @@
             <p class="card-subtitle text-muted"><%= deployment.created_at.strftime('%m/%d/%Y') %> <%= deployment.assignment.capitalize %></p>
             <p class="card-text days">
               <strong>Personnel:</strong>
-              <% if deployment.users.count > 0 %>
-                <% deployment.users.each do |user| %>
-                  <%= user.name.titleize %>
-                <% end %>
-              <% end %>
+              <!-- <% if deployment.users.count > 0 %> -->
+                <!-- <% deployment.users.each do |user| %> -->
+                  <!-- <%= user.name.titleize %> -->
+                <!-- <% end %> -->
+              <!-- <% end %> -->
+              <small><%= safe_join(deployment.users.map { |d| d.name.titleize }, ', ') %></small>
             </p>
             <p class="card-text">
               <strong>Days Deployed:</strong> <%= days_deployed(deployment) %>
