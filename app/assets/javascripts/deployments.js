@@ -3,6 +3,22 @@ jQuery(function() {
   $("a[rel~=tooltip], .has-tooltip").tooltip();
 });
 
+document.addEventListener("turbolinks:load", function() {
+  $(function () {
+    $('#returned_date').datetimepicker({
+      useCurrent: false,
+      viewMode: 'days',
+      format: 'YYYY/MM/DD',
+      icons: {
+        previous: "fa fa-caret-left",
+        next: 'fa fa-caret-right',
+        close: 'fa fa-close'
+      },
+      // debug:true Keeps picker open
+    });
+  });
+})
+
 $('#imagesModal').modal({
     show: false
 });

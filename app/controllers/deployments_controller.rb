@@ -72,7 +72,7 @@ class DeploymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deployment_params
-      params.require(:deployment).permit(:name, :location, :slug, :assignment, :feature_image, {images: []}, :roster_id, user_ids:[])
+      params.require(:deployment).permit(:name, :location, :slug, :assignment, :returned_date, :feature_image, {images: []}, :roster_id, user_ids:[])
     end
 
     def check_active_user

@@ -259,6 +259,24 @@ body {
   }
 }
 
+// Deployments
+
+.deployment-container {
+  .days {
+    margin-bottom: 5px;
+  } 
+}
+
+.bootstrap-datetimepicker-widget table td.active {
+  color: $danger;
+}
+
+.bootstrap-datetimepicker-widget table td.today {
+  color: $danger;
+}
+
+// Footer
+
 footer {
   margin-top: 40px;
 }

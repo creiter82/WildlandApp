@@ -34,6 +34,29 @@
       </div>  
     </div>
 
+    <% if @deployment.created_at %>
+      <div class="form-group row">
+        <%= f.label :created_at, 'Departed:', class: 'col-sm-2 control-label' %>
+        <div class="col-4">
+        <%= f.text_field :name, value: @deployment.created_at.strftime("%m/%d/%Y"), class: 'form-control', readonly: true %>
+        </div>
+      </div>
+    <% end %>
+
+    <%  unless @deployment.new_record? %>
+      <div class="form-group row">
+        <%= f.label :returned_date, 'Returned:', class: 'col-sm-2 control-label' %>
+        <div class="col-4">
+          <div class="input-group" id="returned_date">
+            <%= f.text_field :returned_date, placeholder: '2018-09-18', class: 'form-control', id: 'returned_date' %>
+            <span class="input-group-addon">
+              <span class><%= fa_icon "calendar" %></span>
+            </span>
+          </div>  
+        </div> 
+      </div>
+    <% end %>  
+
     <%= f.hidden_field :roster_id, value: @roster.id %>
 
     <%= fields_for(@deployment, @deployment.team_deployments.build) do |f| %>
