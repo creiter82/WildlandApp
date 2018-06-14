@@ -14,7 +14,7 @@
         <% @user.deployments.from_this_year.each do |deployment| %>    
           <ul>
             <li>
-              <%= deployment.name.titleize %>
+              <em><%= deployment.name.titleize %></em> <span>(<%= days_deployed(deployment) %> days)</span>
             </li>
           </ul>
         <% end %>  
