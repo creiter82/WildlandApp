@@ -38,7 +38,7 @@
       <div class="form-group row">
         <%= f.label :created_at, 'Departed:', class: 'col-sm-2 control-label' %>
         <div class="col-4">
-        <%= f.text_field :name, value: @deployment.created_at.strftime("%m/%d/%Y"), class: 'form-control', readonly: true %>
+        <%= f.text_field :created_at, value: @deployment.created_at.strftime("%m/%d/%Y"), class: 'form-control', readonly: true %>
         </div>
       </div>
     <% end %>
