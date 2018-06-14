@@ -6,7 +6,7 @@ class RostersController < ApplicationController
   # GET /rosters
   # GET /rosters.json
   def index
-    @rosters = Roster.all
+    @rosters = Roster.order(:name)
   end
 
   # GET /rosters/1
