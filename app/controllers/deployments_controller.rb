@@ -7,7 +7,7 @@ class DeploymentsController < ApplicationController
   # GET /deployments
   # GET /deployments.json
   def index
-    @deployments = Deployment.all
+    @deployments = Deployment.order(:created_at)
   end
 
   # GET /deployments/1
